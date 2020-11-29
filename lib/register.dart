@@ -46,7 +46,10 @@ class _RegisterState extends State<Register> {
   bool nextPage=false;
   @override
   Widget build(BuildContext context) {
-
+    Map cd=ModalRoute.of(context).settings.arguments;
+    var google=cd['google'];
+    var facebook=cd['facebook'];
+    google.toString()!='null'?email.text='$google':email.text=null;
     return Scaffold(
 
       // backgroundColor: Colors.grey[300],
@@ -277,31 +280,7 @@ class _RegisterState extends State<Register> {
                         ),
 
                       ],
-
                     ),
-                    // Container( //CONDO
-                    //   margin: EdgeInsets.fromLTRB(20.0, 10, 20.0, 2),
-                    //   child: TextFormField(
-                    //     controller: condo,
-                    //     showCursor: true,
-                    //     decoration: new InputDecoration(
-                    //         errorText: condoError,
-                    //         enabledBorder: OutlineInputBorder(
-                    //           borderSide: BorderSide(color: Colors.transparent),
-                    //         ),
-                    //         focusedBorder: OutlineInputBorder(
-                    //           borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    //           borderSide: BorderSide(color: Colors.indigo[200]),
-                    //         ),
-                    //         suffixIcon: Icon(Icons.home),
-                    //         hintText: 'Condo',
-                    //         labelText: 'Condo',
-                    //         hintStyle: TextStyle(
-                    //             color: Colors.grey[500]
-                    //         )
-                    //     ),
-                    //   ),
-                    // ),
                     Divider(height: 0, indent: 10, endIndent: 10, color: Colors.grey),
                     Container( //ADDRESS
                       margin: EdgeInsets.fromLTRB(20.0, 10, 20.0, 2),

@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart' as auth;
+// import 'dart:io';
+// import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -287,12 +287,13 @@ class _HomeState extends State<Home> {
                         color: Colors.blue,
                         onPressed: () async{
                           if(!fbLogin){
+                            print('is it here');
                             final result = await facebookLogin.logIn();
-                            print(result);
+                            print('$result');
                             switch(result.status){
                               case FacebookLoginStatus.Success:
                                 final token=result.accessToken.token;
-                                final graphResponse=await http.get('https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=$token');
+                                final graphResponse=await http.get('https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=$token');
                                 final profile=json.decode(graphResponse.body);
                                 print(profile['name']);
                                 setState(() {
